@@ -129,6 +129,26 @@ $image = $_GET['image'];
     <p class=\"lead\">you are the first one to posting a comment</p>
   </div>
 </div>";
+         require_once("database/database.php");
+        $db = new database();
+
+        $id = $_GET['id'];
+        $fetching = $db->loadAllDataFromComment($id);
+        foreach ($fetching as $item) {
+            $flag = true;
+            echo "
+    <div class='media mt-4'>
+        <img class='border border-dark rounded-circle mr-3 my-2' src='images/user.png' width='50px' height='50px' class='mr-3' alt='...'>
+        <div class='media-body'>
+            <h5 class='mt-0'>$item[4] at $item[2] says</h5>
+        <div>$item[1]</div>
+        </div>
+    </div>
+        
+  ";
+
+
+        }
     }
     if($flag==false)
     {
