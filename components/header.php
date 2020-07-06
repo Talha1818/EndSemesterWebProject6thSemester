@@ -28,13 +28,22 @@
         <?php
 
         session_start();
+
         if(isset($_SESSION['logedin']))
         {
 
+            setcookie('name','programerTechies',time()+4);
 
-//            setcookie("blog","",time()-120);
+            if(isset($_COOKIE['name'])){
 
-            echo "<h6 class='mr-3 text-white'>Welcome - <strong class='text-white'>".$_SESSION['username']."</strong></h6>";
+                echo "<h6 class='mr-3 text-white'>Welcome - <strong class='text-white'>".$_SESSION['username']."</strong></h6>";
+
+            }
+            else{
+                echo "<h4> <span class=\"badge badge-secondary\">Loading...</span></h4>";
+
+            }
+
 
             echo "
                     <div class='dropdown mr-4 pr-5'>
